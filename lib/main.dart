@@ -4,8 +4,8 @@ import 'package:github_user/auth/application/auth_notifier.dart';
 import 'package:github_user/auth/shared/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'screen/login_screen.dart';
-import 'screen/main_screen.dart';
+import 'screen/login_page.dart';
+import 'screen/main_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
