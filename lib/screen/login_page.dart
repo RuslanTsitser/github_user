@@ -1,21 +1,18 @@
 import 'dart:async';
 
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:github_user/auth/shared/providers.dart';
+import 'package:github_user/auto_router.gr.dart';
 import 'package:github_user/screen/authorization_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
-
   @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -44,19 +41,16 @@ class _LoginPageState extends State<LoginPage> {
                           ref.read(authNotifierProvider.notifier).signIn(
                             (authorizationUrl) {
                               final completer = Completer<Uri>();
-
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AuthorizationPage(
-                                    authorizationUrl: authorizationUrl,
-                                    onAuthorizationCodeRedirectAttempt:
-                                        (redirectUrl) {
-                                      completer.complete(redirectUrl);
-                                    },
-                                  ),
+                              AutoRouter.of(context).push(
+                                AuthorizationRoute(
+                                  authorizationUrl: authorizationUrl,
+                                  onAuthorizationCodeRedirectAttempt:
+                                      (redirectedUrl) {
+                                    completer.complete(redirectedUrl);
+                                  },
                                 ),
                               );
+
                               return completer.future;
                             },
                           );

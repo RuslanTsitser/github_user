@@ -10,6 +10,7 @@ class DefaultPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Icon(
               MdiIcons.github,
