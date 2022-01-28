@@ -2,11 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:github_user/auth/application/auth_notifier.dart';
 import 'package:github_user/auth/shared/providers.dart';
+import 'package:github_user/users/shared/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'auto_router.gr.dart';
-import 'screen/login_page.dart';
-import 'screen/main_page.dart';
+import 'screen/routes/auto_router.gr.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -25,8 +24,10 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(initializationProvider);
-    ref.listen<AuthState>(authNotifierProvider, (previous, next) {
+    ref.listen<AuthState>(authNotifierProvider, (previous, next) async {
       if (next == const AuthState.authenticated()) {
+        final user = ref.read(userRepositoryProvider);
+        await user.getData();
         appRouter.pushAndPopUntil(const MainRoute(),
             predicate: (route) => false);
       }

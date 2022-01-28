@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:github_user/auth/shared/providers.dart';
-import 'package:github_user/auto_router.gr.dart';
-import 'package:github_user/screen/authorization_page.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'routes/auto_router.gr.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);

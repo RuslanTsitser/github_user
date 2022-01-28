@@ -13,10 +13,10 @@
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 
-import 'screen/authorization_page.dart' as _i3;
-import 'screen/default_page.dart' as _i1;
-import 'screen/login_page.dart' as _i2;
-import 'screen/main_page.dart' as _i4;
+import '../authorization_page.dart' as _i3;
+import '../default_page.dart' as _i1;
+import '../login_page.dart' as _i2;
+import '../main_page.dart' as _i4;
 
 class AppRouter extends _i5.RootStackRouter {
   AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])

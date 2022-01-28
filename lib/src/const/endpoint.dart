@@ -4,9 +4,11 @@ import 'package:github_user/src/const/url.dart';
 class EndPoint {
   static const user = apiBaseUrl + '/user';
 
+  static const userRepos = apiBaseUrl + '/user/repos';
+
   static const searchUsers = apiBaseUrl + '/search/users';
 
-  static const users = apiBaseUrl + '/users';
+  static String repos(String login) => apiBaseUrl + '/users/$login/repos';
 
   static const authorization = baseUrl + '/login/oauth/authorize';
 
