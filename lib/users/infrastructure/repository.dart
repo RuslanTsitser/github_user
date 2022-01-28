@@ -28,6 +28,23 @@ class UserRepository extends Repository {
     _user = User.fromJson(response.data);
   }
 
+  Future<List<dynamic>> getFollowersData(String login) async {
+    final credentials = await _storage.read();
+    final accessToken = credentials!.accessToken;
+
+    final response = await ApiService().getData(EndPoint.followers(login),
+        headers: {'Authorization': 'bearer $accessToken'});
+    final listData = response.data as List;
+
+    List<User> followersRepo = [];
+
+    for (var element in listData) {
+      followersRepo.add(User.fromJson(element));
+    }
+
+    return listData;
+  }
+
   @override
   Future<List<User>> getSearchData(String login) async {
     final credentials = await _storage.read();

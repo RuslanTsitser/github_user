@@ -10,6 +10,9 @@ class EndPoint {
 
   static String repos(String login) => apiBaseUrl + '/users/$login/repos';
 
+  static String followers(String login) =>
+      apiBaseUrl + '/users/$login/followers';
+
   static const authorization = baseUrl + '/login/oauth/authorize';
 
   static const token = baseUrl + '/login/oauth/access_token';

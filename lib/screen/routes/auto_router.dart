@@ -3,6 +3,7 @@ import 'package:github_user/screen/authorization_page.dart';
 import 'package:github_user/screen/default_page.dart';
 import 'package:github_user/screen/login_page.dart';
 import 'package:github_user/screen/main_page.dart';
+import 'package:github_user/screen/user_repos_page.dart';
 
 @MaterialAutoRouter(
   routes: [
